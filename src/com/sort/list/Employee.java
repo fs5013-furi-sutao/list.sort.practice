@@ -1,5 +1,8 @@
 package com.sort.list;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -63,6 +66,11 @@ public class Employee {
         return this.firstName + this.lastName;
     }
 
+    private Integer getSalaryMonthly() {
+
+        return this.salaryMonthly;
+    }
+
     private String getAllProps() {
 
         return String.format("{ID:%d, 名前:%s %s, 年齢:%d, 月給:%d}", 
@@ -70,7 +78,7 @@ public class Employee {
     }
 
     /**
-     * 従業員リストを順に表示
+     * 従業員リストをラムダ式で順に表示
      * @param emps 従業員リスト
      */
     public static void showAllEmpsWithProps(List<Employee> emps) {
@@ -82,6 +90,7 @@ public class Employee {
 
     /**
      * 従業員リストを年齢の昇順に並べる
+     * （STREAM API を使ったソート）
      * @param emps 従業員リスト
      * @return 並べ替えた従業員リスト
      */
@@ -93,6 +102,7 @@ public class Employee {
 
     /**
      * 従業員リストを名前の昇順に並べる
+     * （STREAM API を使ったソート）
      * @param emps 従業員リスト
      * @return 並べ替えた従業員リスト
      */
@@ -102,4 +112,37 @@ public class Employee {
                 .sorted((emp1, emp2) -> emp1.getFullName().compareTo(emp2.getFullName()))
                 .collect(Collectors.toList());
     }
+
+    /**
+     * 
+     * 従業員リストを月給の昇順に並べる
+     * （匿名クラスでソートを実装）
+     * @param emps 従業員リスト
+     * @return 並べ替えた従業員リスト
+     */
+    public static List<Employee> sortBySalaryMonthlyAsc(List<Employee> emps) {
+
+        // 従業員リストの deepCopy を取得
+        List<Employee> empsCopy = getDeepCopiedEmps(emps);
+
+        Collections.sort(empsCopy, new Comparator<Employee>() {
+
+            @Override
+            public int compare(Employee emp1, Employee emp2) {
+                return emp1.getSalaryMonthly().compareTo(emp2.getSalaryMonthly());
+            }
+        });
+
+        return(empsCopy);
+    }
+
+    /**
+     * 従業員リストの deepCopy を返却
+     * @param emps 従業員リスト
+     * @return deepCopyした従業員リスト
+     */
+     private static List<Employee> getDeepCopiedEmps(List<Employee> emps) {
+
+         return new ArrayList<Employee>(emps);
+     }
 }

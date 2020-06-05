@@ -24,6 +24,11 @@ public class Main {
         out(empsSortedByNameAsc);
 
         System.out.println();
+        System.out.println("月給順に並び替え：");
+        List<Employee> empsSortedBySalaryMonthlyAsc = Employee.sortBySalaryMonthlyAsc(emps);
+        out(empsSortedBySalaryMonthlyAsc);
+
+        System.out.println();
         System.out.println("並び替え前:");
         out(emps);
     }
@@ -33,7 +38,7 @@ public class Main {
         List<Employee> emps = new ArrayList<Employee>();
         emps.add(new Employee().id(1).firstName("Yamada").lastName("Taro").age(35).salary(5000));
         emps.add(new Employee().id(3).firstName("Yamamoto").lastName("Ichiro").age(15).salary(120000));
-        emps.add(new Employee().id(2).firstName("Asai").lastName("Asao").age(18).salary(1000));
+        emps.add(new Employee().id(2).firstName("Asai").lastName("Asao").age(18).salary(9000));
         return emps;
     }
 
