@@ -81,7 +81,7 @@ public class Employee {
      * 従業員リストをラムダ式で順に表示
      * @param emps 従業員リスト
      */
-    public static void showAllEmpsWithProps(List<Employee> emps) {
+    public static void showAllEmpsWithProps(final List<Employee> emps) {
 
         emps.forEach(e -> {
             System.out.println(e.getAllProps());
@@ -94,7 +94,7 @@ public class Employee {
      * @param emps 従業員リスト
      * @return 並べ替えた従業員リスト
      */
-    public static List<Employee> sortByAgeAsc(List<Employee> emps) {
+    public static List<Employee> sortByAgeAsc(final List<Employee> emps) {
 
         return emps.stream().sorted((emp1, emp2) -> emp1.getAge().compareTo(emp2.getAge()))
                 .collect(Collectors.toList());
@@ -106,7 +106,7 @@ public class Employee {
      * @param emps 従業員リスト
      * @return 並べ替えた従業員リスト
      */
-    public static List<Employee> sortByNameAsc(List<Employee> emps) {
+    public static List<Employee> sortByNameAsc(final List<Employee> emps) {
 
         return emps.stream()
                 .sorted((emp1, emp2) -> emp1.getFullName().compareTo(emp2.getFullName()))
@@ -120,7 +120,7 @@ public class Employee {
      * @param emps 従業員リスト
      * @return 並べ替えた従業員リスト
      */
-    public static List<Employee> sortBySalaryMonthlyAsc(List<Employee> emps) {
+    public static List<Employee> sortBySalaryMonthlyAsc(final List<Employee> emps) {
 
         // 従業員リストの deepCopy を取得
         List<Employee> empsCopy = getDeepCopiedEmps(emps);
