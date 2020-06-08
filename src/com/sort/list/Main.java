@@ -1,49 +1,57 @@
 package com.sort.list;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.sort.list.domain.Employee;
+import com.sort.list.domain.Employees;
 
 public class Main {
     public static void main(String[] args) {
 
         // 従業員一覧を作成
-        List<Employee> emps = makeEmps();
+        Employees emps = makeEmps();
 
+        br();
         System.out.println("並び替え前:");
         out(emps);
 
-        System.out.println();
-        System.out.println("年齢順に並び替え：");
-        List<Employee> empsSortedByAgeAsc = Employee.sortByAgeAsc(emps);
-        out(empsSortedByAgeAsc);
+        br();
+        System.out.println("年齢順：");
+        out(emps.sortByAgeAsc());
 
+        br();
+        System.out.println("名前順：");
+        out(emps.sortByNameAsc());
 
-        System.out.println();
-        System.out.println("名前順に並び替え：");
-        List<Employee> empsSortedByNameAsc = Employee.sortByNameAsc(emps);
-        out(empsSortedByNameAsc);
+        br();
+        System.out.println("月給順：");
+        out(emps.sortBySalaryMonthlyAsc());
 
-        System.out.println();
-        System.out.println("月給順に並び替え：");
-        List<Employee> empsSortedBySalaryMonthlyAsc = Employee.sortBySalaryMonthlyAsc(emps);
-        out(empsSortedBySalaryMonthlyAsc);
-
-        System.out.println();
+        br();
         System.out.println("並び替え前:");
         out(emps);
+
+        br();
     }
 
     // 従業員一覧を作成
-    private static List<Employee> makeEmps() {
-        List<Employee> emps = new ArrayList<Employee>();
+    private static Employees makeEmps() {
+
+        Employees emps = new Employees();
         emps.add(new Employee().id(1).firstName("Yamada").lastName("Taro").age(35).salary(5000));
         emps.add(new Employee().id(3).firstName("Yamamoto").lastName("Ichiro").age(15).salary(120000));
         emps.add(new Employee().id(2).firstName("Asai").lastName("Asao").age(18).salary(9000));
+
         return emps;
     }
 
     // 委譲で従業員リストを一覧表示
-    private static void out(final List<Employee> emps) {
-        Employee.showAllEmpsWithProps(emps);
+    private static void out(final Employees emps) {
+
+        emps.showAllEmpsWithProps();
+    }
+
+    // 改行表示
+    private static void br() {
+
+        System.out.println();
     }
 }
