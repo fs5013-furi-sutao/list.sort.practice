@@ -37,7 +37,7 @@ final public class Employees {
     }
 
     /**
-     * 従業員リストを年齢の昇順に並べる （STREAM API を使ったソート）
+     * 従業員リストを年齢の昇順に並べる （Stream API を使ったソート）
      * @return 並べ替えた従業員リスト
      */
     public Employees sortByAgeAsc() {
@@ -50,7 +50,7 @@ final public class Employees {
     }
 
     /**
-     * 従業員リストを名前の昇順に並べる （STREAM API を使ったソート）
+     * 従業員リストを名前の昇順に並べる （Stream API を使ったソート）
      * @return 並べ替えた従業員リスト
      */
     public Employees sortByNameAsc() {
@@ -72,6 +72,7 @@ final public class Employees {
         // 従業員リストの deepCopy を取得
         List<Employee> empsCopy = getDeepCopiedEmps();
 
+        // 匿名クラス
         Collections.sort(empsCopy, new Comparator<Employee>() {
 
             @Override
